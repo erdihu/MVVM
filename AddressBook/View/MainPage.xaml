@@ -14,8 +14,6 @@
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal">
                     <AppBarButton Label="New"
-                                  Command="{Binding}"
-                                  CommandParameter="NewContact"
                                   Icon="Add"
                                   RequestedTheme="Light" />
                 </StackPanel>
@@ -36,4 +34,5 @@
         </SplitView.Pane>
     </SplitView>
 
+    
 </Page>
