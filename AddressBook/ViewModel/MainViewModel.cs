@@ -19,7 +19,7 @@ namespace AddressBook.ViewModel
         private IRepository _mockrepo;
         private PersonViewModel _selectedPerson;
 
-        public ObservableCollection<PersonViewModel> Persons;
+        public ObservableCollection<PersonViewModel> Persons { get; set; }
         //public ObservableCollection<AddressViewModel> Adresses { get; } = new ObservableCollection<AddressViewModel>();
 
         public PersonViewModel SelectedPerson

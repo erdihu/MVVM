@@ -24,18 +24,28 @@ namespace AddressBook
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Commands _command;
 
         public MainPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             this.DataContext = new MainViewModel();
-            //this.Loaded += MainPage_Loaded;
+            this.Loaded += MainPage_Loaded;
+            _command = new Commands();
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            this.DataContext = _command;
+        }
 
+        async private void _command_DoSomething(string command)
+        {
+            if (command.ToLower() == "Add")
+            {
+                //
+            }
         }
     }
 }

@@ -8,21 +8,31 @@
     xmlns:model="using:AddressBook.Model"
     xmlns:viewModel="using:AddressBook.ViewModel"
     mc:Ignorable="d">
-    <Page.Resources>
-        <DataTemplate x:Name="PersonListBind" x:DataType="model:Person">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{Binding FirstName}"></TextBlock>
-                <TextBlock Text="{Binding LastName}"></TextBlock>
-                <TextBlock>TEST</TextBlock>
-            </StackPanel>
-        </DataTemplate>
-    </Page.Resources>
-    
 
-    
-    <SplitView>
+    <Page.BottomAppBar>
+        <CommandBar IsSticky="True" ClosedDisplayMode="Minimal">
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton Label="New"
+                                  Command="{Binding}"
+                                  CommandParameter="NewContact"
+                                  Icon="Add"
+                                  RequestedTheme="Light" />
+                </StackPanel>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <SplitView Background="White" PaneBackground="SlateGray" DisplayMode="Inline" IsPaneOpen="True" OpenPaneLength="250">
         <SplitView.Pane>
-            <ListView ItemTemplate="{StaticResource PersonListBind}" BorderThickness="0,2,0,1" BorderBrush="Gray" ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" />
+            <ListView BorderThickness="0,2,0,1" BorderBrush="Gray" ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </SplitView.Pane>
     </SplitView>
 

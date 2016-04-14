@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Commands.cs" />
     <Compile Include="Model\IRepository.cs" />
     <Compile Include="Model\MockRepo.cs" />
     <Compile Include="Model\Person.cs" />
