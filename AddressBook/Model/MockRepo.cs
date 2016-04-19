@@ -9,11 +9,11 @@ namespace AddressBook.Model
 {
     public class MockRepo : IRepository
     {
-        private List<Person> _persons;
+        private ObservableCollection<Person> _persons;
 
         public MockRepo()
         {
-            List<Address> _addresses = new List<Address>
+            var _addresses = new ObservableCollection<Address>
             {
                new Address
                {
@@ -33,7 +33,7 @@ namespace AddressBook.Model
                }
             };
 
-            _persons = new List<Person>
+            _persons = new ObservableCollection<Person>
             {
                 new Person
                 {
@@ -71,7 +71,7 @@ namespace AddressBook.Model
             }
         }
 
-        public List<Person> Get()
+        public ObservableCollection<Person> Get()
         {
             return _persons;
         }
@@ -118,8 +118,9 @@ namespace AddressBook.Model
 
             if (toBeUpdated != null)
             {
-                person = toBeUpdated;
+                toBeUpdated = person;
             }
+            SaveChanges();
         }
     }
 }
