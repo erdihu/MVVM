@@ -27,13 +27,12 @@ namespace AddressBook
     public sealed partial class MainPage : Page
     {
         private Commands _command;
-        private MainViewModel _mvm;
 
         public MainPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            this.DataContext = _mvm.GetMainViewModel();
+            this.DataContext = new MainViewModel();
             this.Loaded += MainPage_Loaded;
         }
 
