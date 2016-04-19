@@ -37,7 +37,6 @@ namespace AddressBook
             this.Loaded += MainPage_Loaded;
         }
 
-        //We don't need navigation on main page
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;

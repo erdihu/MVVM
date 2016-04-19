@@ -26,7 +26,6 @@ namespace AddressBook.View
     public sealed partial class AddContact : Page
     {
         private MockRepo _repo = new MockRepo();
-        private MainViewModel _mvm;
         
         //private MainViewModel mvm = new MainViewModel();
         //private PersonViewModel pvm;
@@ -34,7 +33,6 @@ namespace AddressBook.View
         {
             this.InitializeComponent();
             this.Loaded += OnLoad;
-            _mvm = _mvm.GetMainViewModel();
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
@@ -80,7 +78,7 @@ namespace AddressBook.View
             };
 
             _repo.Insert(p);
-            _mvm.Populate();
+
             //pvm = new PersonViewModel(p);
             //mvm.Persons.Add(pvm);
         }

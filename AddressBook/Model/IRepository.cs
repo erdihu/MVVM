@@ -9,7 +9,7 @@ namespace AddressBook.Model
 {
     public interface IRepository
     {
-        ObservableCollection<Person> Get();
+        List<Person> Get();
         Person Get(Person person);
         void Update(Person person);
         void Delete(Person person);
