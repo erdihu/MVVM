@@ -45,5 +45,10 @@ namespace AddressBook
         {
             Frame.Navigate(typeof (AddContact));
         }
+
+        private void SeeAll_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SeeAll));
+        }
     }
 }

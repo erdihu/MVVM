@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="AddressBook.View.SeeAll"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AddressBook.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:AddressBook.ViewModel"
+    xmlns:model="using:AddressBook.Model"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <GridView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"  IsItemClickEnabled="True">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="viewModel:PersonViewModel">
+                    <StackPanel>
+                        <Image Source="../Assets/Square44x44Logo.png" MaxWidth="44" MaxHeight="44" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </Image>
+                        <TextBlock Text="{x:Bind FullName}" Margin="5,5" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>
