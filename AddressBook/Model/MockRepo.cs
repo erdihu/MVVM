@@ -82,6 +82,12 @@ namespace AddressBook.Model
             return fetched ?? null;
         }
 
+        public Person Insert(Person p)
+        {
+            _persons.Add(p);
+            return p;
+        }
+
         public Person Insert(string firstName, string lastName, string email, string telephoneMain, string telephoneOther, string skype, string website, Address address)
         {
             Person person = new Person

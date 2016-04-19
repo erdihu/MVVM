@@ -14,6 +14,7 @@ namespace AddressBook.Model
         void Update(Person person);
         void Delete(Person person);
         Person Insert(string firstName, string lastName, string email, string telephoneMain, string telephoneOther, string skype, string website, Address address);
+        Person Insert(Person p);
         void SaveChanges();
     }
 }

@@ -28,7 +28,9 @@ namespace AddressBook.ViewModel
             _person = p;
         }
 
-        public Guid Id { get { return _person.Id; } }
+        public Guid Id  => _person.Id; 
+
+        public string FullName => $"{FirstName} {LastName}";
 
         public string FirstName
         {

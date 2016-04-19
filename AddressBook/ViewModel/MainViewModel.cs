@@ -14,13 +14,12 @@ using Template10.Utils;
 
 namespace AddressBook.ViewModel
 {
-    class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         private IRepository _mockrepo;
         private PersonViewModel _selectedPerson;
 
         public ObservableCollection<PersonViewModel> Persons { get; set; }
-        //public ObservableCollection<AddressViewModel> Adresses { get; } = new ObservableCollection<AddressViewModel>();
 
         public PersonViewModel SelectedPerson
         {
@@ -36,7 +35,7 @@ namespace AddressBook.ViewModel
         public MainViewModel()
         {
             _mockrepo = new MockRepo();
-            Persons = new ObservableCollection<PersonViewModel>(_mockrepo.Get().Select(p=>new PersonViewModel(p)));
+            Persons = new ObservableCollection<PersonViewModel>(_mockrepo.Get().OrderBy(p=>p.FirstName).Select(p=>new PersonViewModel(p)));
         }
 
 
