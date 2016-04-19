@@ -27,12 +27,13 @@ namespace AddressBook
     public sealed partial class MainPage : Page
     {
         private Commands _command;
+        private MainViewModel _mvm;
 
         public MainPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            this.DataContext = new MainViewModel();
+            this.DataContext = _mvm.GetMainViewModel();
             this.Loaded += MainPage_Loaded;
         }
 
@@ -40,7 +41,6 @@ namespace AddressBook
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-            
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
