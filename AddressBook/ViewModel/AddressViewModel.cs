@@ -22,7 +22,7 @@ namespace AddressBook.ViewModel
 
         private Address _address;
 
-        public Guid Id { get { return _address.Id; } }
+        public Guid Id => _address.Id;
 
         public AddressViewModel(Address a)
         {

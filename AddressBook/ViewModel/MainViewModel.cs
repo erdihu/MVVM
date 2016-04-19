@@ -20,13 +20,6 @@ namespace AddressBook.ViewModel
         private PersonViewModel _selectedPerson;
 
         public ObservableCollection<PersonViewModel> Persons { get; set; }
-        private  static MainViewModel _mvm;
-        public static MainViewModel Mvm => _mvm ?? (_mvm = new MainViewModel());
-
-        public MainViewModel GetMainViewModel()
-        {
-            return _mvm ?? new MainViewModel();
-        }
 
         public PersonViewModel SelectedPerson
         {

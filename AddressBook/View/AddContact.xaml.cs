@@ -56,7 +56,7 @@ namespace AddressBook.View
             
             Person p = new Person()
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 FirstName = TxtFName.Text,
                 LastName = TxtLName.Text,
                 Email = TxtEmail.Text,
@@ -66,7 +66,7 @@ namespace AddressBook.View
                 Website = TxtWebsite.Text,
                 Address = new Address
                 {
-                    Id = new Guid(),
+                    Id = Guid.NewGuid(),
                     Street = TxtStreet.Text,
                     City = TxtCity.Text,
                     PostalCode = TxtPostalcode.Text,

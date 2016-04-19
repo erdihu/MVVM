@@ -17,7 +17,7 @@ namespace AddressBook.Model
             {
                new Address
                {
-                   Id = new Guid(),
+                   Id = Guid.NewGuid(),
                    Street = "Northway 1",
                    City = "Northcity",
                    PostalCode = "12345",
@@ -25,7 +25,7 @@ namespace AddressBook.Model
                }, 
                new Address
                {
-                   Id = new Guid(),
+                   Id = Guid.NewGuid(),
                    Street = "Redway 2",
                    City = "Ghostcity",
                    PostalCode = "12345",
@@ -37,7 +37,7 @@ namespace AddressBook.Model
             {
                 new Person
                 {
-                    Id = new Guid(),
+                    Id = Guid.NewGuid(),
                     FirstName = "The",
                     LastName = "Martian",
                     Email = "martian@mars.com",
@@ -49,7 +49,7 @@ namespace AddressBook.Model
                 },
                 new Person
                 {
-                    Id = new Guid(),
+                    Id = Guid.NewGuid(),
                     FirstName = "Big",
                     LastName = "Guy",
                     Email = "N/A",
@@ -92,7 +92,7 @@ namespace AddressBook.Model
         {
             Person person = new Person
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
