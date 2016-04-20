@@ -25,6 +25,7 @@ namespace AddressBook.View
     /// </summary>
     public sealed partial class AddContact : Page
     {
+        private MainViewModel _mvm = new MainViewModel();
         private MockRepo _repo = new MockRepo();
         public AddContact()
         {
@@ -74,7 +75,9 @@ namespace AddressBook.View
                 }
             };
 
+            _mvm.Persons.Clear();
             _repo.Insert(p);
+            _mvm.Populate();
         }
     }
 }

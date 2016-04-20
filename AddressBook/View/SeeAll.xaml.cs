@@ -24,10 +24,11 @@ namespace AddressBook.View
     /// </summary>
     public sealed partial class SeeAll : Page
     {
+        MainViewModel _mvm = new MainViewModel();
         public SeeAll()
         {
             this.InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.DataContext = _mvm;
             this.Loaded += OnLoad;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
