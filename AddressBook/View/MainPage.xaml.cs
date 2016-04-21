@@ -50,5 +50,10 @@ namespace AddressBook
         {
             Frame.Navigate(typeof(SeeAll));
         }
+
+        private void ToggleClick(object sender, RoutedEventArgs e)
+        {
+            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
+        }
     }
 }

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:AddressBook.Model"
     xmlns:viewModel="using:AddressBook.ViewModel"
+    xmlns:views ="using:AddressBook.View"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -30,7 +31,36 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid>
+
+    <Grid Background="Gainsboro" HorizontalAlignment="Left" Width="1920">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMin500">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateMin0">
+                    <VisualState.Setters>
+                        <Setter Target="TxtLName.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="TxtLName.(RelativePanel.Below)" Value="TxtFName"/>
+                        <Setter Target="TxtT1.(RelativePanel.Below)" Value="TxtLName"/>
+                        <Setter Target="TxtT2.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="TxtT2.(RelativePanel.Below)" Value="TxtT1"/>
+                        <Setter Target="TxtEmail.(RelativePanel.Below)" Value="TxtT2"/>
+                        <Setter Target="TxtSkype.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="TxtSkype.(RelativePanel.Below)" Value="TxtEmail"/>
+                        <Setter Target="TxtWebsite.(RelativePanel.Below)" Value="TxtSkype"/>
+                        <Setter Target="TxtWebsite.(FrameworkElement.Width)" Value="250"/>
+                        <Setter Target="TxtStreet.(FrameworkElement.Width)" Value="250"/>
+                        <Setter Target="TxtStreet.(FrameworkElement.Height)" Value="120"/>
+                        <Setter Target="TxtCity.(FrameworkElement.Width)" Value="250"/>
+                        <Setter Target="TxtCountry.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="TxtCountry.(RelativePanel.Below)" Value="TxtPostalcode"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
@@ -39,31 +69,36 @@
             <RowDefinition Height="75" />
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <RelativePanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" Width="250" QueryIcon="Find" PlaceholderText="Search" />
+      
+        <RelativePanel Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Center">
+            <AutoSuggestBox Name="SearchBox"  RelativePanel.AlignLeftWithPanel="True" Width="250" QueryIcon="Find" PlaceholderText="Search" />
+            <Button Content="Toggle" RelativePanel.Below="SearchBox" Click="ToggleClick"/>
         </RelativePanel>
 
 
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <TextBlock Text="{Binding FullName}"></TextBlock>
         </StackPanel>
+
+        <SplitView Name="SplitView"  Grid.Row="1" Grid.Column="0" IsPaneOpen="True">
+            <SplitView.Pane>
+                <ListView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" IsItemClickEnabled="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="viewModel:PersonViewModel">
+                                <views:ContactListUserControl/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </SplitView.Pane>
         
-        <ListView Grid.Row="1" Grid.Column="0" Background="Gainsboro" ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" IsItemClickEnabled="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="viewModel:PersonViewModel">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{x:Bind FullName}" Margin="5,5"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-        </ListView>
-        
+        </SplitView>
+            
         <TextBlock Grid.Column="1" Grid.Row="0" Width="Auto" Text="{Binding SelectedPerson.FullName}" FontSize="36"/>
-        
-        <RelativePanel Grid.Column="1" Grid.Row="1">
+
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <RelativePanel >
             <TextBox Name="TxtFName"  RelativePanel.AlignLeftWithPanel="True" Width="250" Header="Name" Text="{Binding SelectedPerson.FirstName}" Margin="5,5"/>
-            <TextBox Name ="TxtLName" RelativePanel.RightOf="TxtFName" Width="250" Header="Surname" Text="{Binding SelectedPerson.LastName}" Margin="5,5" />
+            <TextBox Name ="TxtLName" Width="250" Header="Surname" Text="{Binding SelectedPerson.LastName}" Margin="5,5" RelativePanel.RightOf="TxtFName" />
             <TextBox Name="TxtT1"  RelativePanel.Below="TxtFName" Width="250" Header="Telephone (Main)" Text="{Binding SelectedPerson.TelephoneMain}" Margin="5,5"/>
             <TextBox Name="TxtT2" RelativePanel.RightOf="TxtT1" RelativePanel.Below="TxtLName" Width="250" Header="Telephone (Other)" Text="{Binding SelectedPerson.TelephoneOther}" Margin="5,5"/>
             <TextBox Name="TxtEmail" RelativePanel.Below="TxtT1" Width="250" Header="Email" Text="{Binding SelectedPerson.Email}" Margin="5,5"/>
@@ -75,6 +110,7 @@
             <TextBox Name="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Postal code" Text="{Binding SelectedPerson.Address.PostalCode}" Margin="5,5"/>
             <TextBox Name="TxtCountry" RelativePanel.RightOf="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Country" Text="{Binding SelectedPerson.Address.Country}" Margin="5,5"/>
         </RelativePanel>
+        </ScrollViewer>
         
     </Grid>
 </Page>
