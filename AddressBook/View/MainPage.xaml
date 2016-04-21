@@ -41,6 +41,9 @@
                     </VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="VisualStateMin0">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1"/>
+                    </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TxtLName.(RelativePanel.RightOf)" Value=""/>
                         <Setter Target="TxtLName.(RelativePanel.Below)" Value="TxtFName"/>
@@ -95,7 +98,7 @@
             
         <TextBlock Grid.Column="1" Grid.Row="0" Width="Auto" Text="{Binding SelectedPerson.FullName}" FontSize="36"/>
 
-        <ScrollViewer Grid.Column="1" Grid.Row="1">
+        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Visible">
             <RelativePanel >
             <TextBox Name="TxtFName"  RelativePanel.AlignLeftWithPanel="True" Width="250" Header="Name" Text="{Binding SelectedPerson.FirstName}" Margin="5,5"/>
             <TextBox Name ="TxtLName" Width="250" Header="Surname" Text="{Binding SelectedPerson.LastName}" Margin="5,5" RelativePanel.RightOf="TxtFName" />
