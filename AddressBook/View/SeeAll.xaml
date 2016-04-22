@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <GridView ItemsSource="{Binding Persons, Mode=TwoWay}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"  IsItemClickEnabled="True">
+        <GridView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"  IsItemClickEnabled="True">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="viewModel:PersonViewModel">
                     <StackPanel>

@@ -26,13 +26,11 @@ namespace AddressBook.View
     public sealed partial class AddContact : Page
     {
         private MainViewModel _model;
-        private readonly PersonViewModel _person = new PersonViewModel(new Person());
 
         public AddContact()
         {
             this.InitializeComponent();
             this.Loaded += OnLoad;
-            DataContext = _person;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
@@ -62,29 +60,28 @@ namespace AddressBook.View
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _model.Persons.Add(_person);
-            Frame.GoBack();
-            //Person p = new Person()
-            //{
-            //    Id = Guid.NewGuid(),
-            //    FirstName = TxtFName.Text,
-            //    LastName = TxtLName.Text,
-            //    Email = TxtEmail.Text,
-            //    TelephoneMain = TxtT1.Text,
-            //    TelephoneOther = TxtT2.Text,
-            //    Skype = TxtSkype.Text,
-            //    Website = TxtWebsite.Text,
-            //    Address = new Address
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Street = TxtStreet.Text,
-            //        City = TxtCity.Text,
-            //        PostalCode = TxtPostalcode.Text,
-            //        Country = TxtCountry.Text
-            //    }
-            //};
+            
+            Person p = new Person()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = TxtFName.Text,
+                LastName = TxtLName.Text,
+                Email = TxtEmail.Text,
+                TelephoneMain = TxtT1.Text,
+                TelephoneOther = TxtT2.Text,
+                Skype = TxtSkype.Text,
+                Website = TxtWebsite.Text,
+                Address = new Address
+                {
+                    Id = Guid.NewGuid(),
+                    Street = TxtStreet.Text,
+                    City = TxtCity.Text,
+                    PostalCode = TxtPostalcode.Text,
+                    Country = TxtCountry.Text
+                }
+            };
 
-            //_model.Persons.Add(new PersonViewModel(p));
+            _model.Persons.Add(new PersonViewModel(p));
         }
     }
 }

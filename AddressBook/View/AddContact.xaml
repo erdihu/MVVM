@@ -7,11 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    
-    
     <RelativePanel Grid.Column="1" Grid.Row="1" Background="White">
-        <local:EditPersonUserControl x:Name="editPerson" DataContext="{Binding}" />
-        <Button Name="SaveButton" RelativePanel.Below="editPerson" Content="Save" Click="SaveButton_OnClick" Margin="5,5"/>
+        <TextBox Name="TxtFName"  RelativePanel.AlignLeftWithPanel="True" Width="250" Header="Name" Margin="5,5"/>
+        <TextBox Name ="TxtLName" RelativePanel.RightOf="TxtFName" Width="250" Header="Surname" Margin="5,5" />
+        <TextBox Name="TxtT1"  RelativePanel.Below="TxtFName" Width="250" Header="Telephone (Main)" Margin="5,5"/>
+        <TextBox Name="TxtT2" RelativePanel.RightOf="TxtT1" RelativePanel.Below="TxtLName" Width="250" Header="Telephone (Other)" Margin="5,5"/>
+        <TextBox Name="TxtEmail" RelativePanel.Below="TxtT1" Width="250" Header="Email"  Margin="5,5"/>
+        <TextBox Name="TxtSkype" RelativePanel.RightOf="TxtEmail" RelativePanel.Below="TxtT2" Width="250" Header="Skype" Margin="5,5"/>
+        <TextBox Name="TxtWebsite" RelativePanel.Below="TxtEmail" Width="505" Header="Website" Margin="5,5"/>
+        <TextBlock Name="ADetail"  Text="Address Details" RelativePanel.Below="TxtWebsite" Margin="5,5" FontWeight="Bold"/>
+        <TextBox Name="TxtStreet" RelativePanel.Below="ADetail" Width="505" Header="Street" Margin="5,5"/>
+        <TextBox Name="TxtCity" RelativePanel.Below="TxtStreet" Width="505" Header="City" Margin="5,5"/>
+        <TextBox Name="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Postal code" Margin="5,5"/>
+        <TextBox Name="TxtCountry" RelativePanel.RightOf="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Country" Margin="5,5"/>
+        <Button Name="SaveButton" RelativePanel.Below="TxtPostalcode" Content="Save" Click="SaveButton_OnClick" Margin="5,5"></Button>
     </RelativePanel>
 
 </Page>

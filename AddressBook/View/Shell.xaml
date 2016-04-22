@@ -64,7 +64,7 @@
                       VerticalAlignment="Stretch"
                       HorizontalAlignment="Stretch"
                       Background="Gainsboro">
-                    <ListView ItemsSource="{Binding Persons, Mode=TwoWay}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+                    <ListView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -79,9 +79,7 @@
 
             <SplitView.Content>
                 <Grid>
-                    <!--This is the frame where details view loaded-->
                     <Frame x:Name="SplitViewFrame"></Frame>
-
                     <TextBlock x:Name="WidthIndicator"
                                Foreground="Black"
                                VerticalAlignment="Bottom"
