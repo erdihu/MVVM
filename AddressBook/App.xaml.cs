@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -36,7 +41,6 @@ namespace AddressBook
             this.Suspending += OnSuspending;
         }
 
-        MockRepo repo = new MockRepo();
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -111,5 +115,54 @@ namespace AddressBook
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        //public static async Task SaveModelAsync()
+        //{
+        //    //Serialize the model object to a memory stream
+        //    DataContractSerializer dcs = new DataContractSerializer(Model.GetType());
+
+        //    //Write model string to file
+        //    var file = await ApplicationData.Current
+        //        .LocalFolder
+        //        .CreateFileAsync("db.xml", CreationCollisionOption.OpenIfExists);
+        //    var transaction = await file.OpenTransactedWriteAsync();
+        //    var opn = transaction.Stream;
+        //    var ostream = opn.GetOutputStreamAt(0);
+        //    var stream = ostream.AsStreamForWrite();
+        //    dcs.WriteObject(stream, Model);
+        //    stream.Flush();
+        //    stream.Dispose();
+        //    await transaction.CommitAsync();
+        //    transaction.Dispose();
+        //}
+
+        //async public static Task<PersonViewModel> LoadModelAsync()
+        //{
+        //    //read target file's text
+        //    try
+        //    {
+        //        var file = await ApplicationData.Current.LocalFolder.GetFileAsync("db.xml");
+        //        var opn = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+        //        var stream = opn.GetInputStreamAt(0);
+        //        var reader = new DataReader(stream);
+        //        var size = (await file.GetBasicPropertiesAsync()).Size;
+        //        await reader.LoadAsync((uint)size);
+        //        var model_text = reader.ReadString((uint)size);
+
+        //        //before attempting deserialize, ensure the string is valid
+        //        if (string.IsNullOrWhiteSpace(model_text))
+        //            return null;
+
+        //        //deserialize the text
+        //        var ms = new MemoryStream(Encoding.UTF8.GetBytes(model_text));
+        //        var dsc = new DataContractSerializer(typeof(PersonViewModel));
+        //        var ret_val = dsc.ReadObject(ms) as PersonViewModel;
+        //        return ret_val;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }
