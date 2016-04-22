@@ -1,5 +1,9 @@
 # MVVM Address Book
-*My first MVVM project. Can be considered as -half- MVVM since there are many stuff missing. Created with Universal Windows Platform - UWP*
+*My first MVVM project. Can be considered as -half- MVVM since there are many stuff missing. Created with Universal Windows Platform - UWP. It takes advantage of adaptive UI*
+
+# Screenshot
+
+![](https://vgy.me/poqYsV.gif)
 
 ##Functions
 * Add new contact
