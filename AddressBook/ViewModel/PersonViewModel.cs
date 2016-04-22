@@ -30,7 +30,8 @@ namespace AddressBook.ViewModel
             Model = p;
         }
 
-        public Guid Id  => Model.Id; 
+        public Guid Id  => Model.Id;
+
 
         public string FullName => $"{FirstName} {LastName}";
 
@@ -42,7 +43,7 @@ namespace AddressBook.ViewModel
                 if (value == Model.FirstName) return;
                 Model.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
-                OnPropertyChanged(nameof(LastName));
+                OnPropertyChanged(nameof(FullName));
             }
         }
 
@@ -54,7 +55,7 @@ namespace AddressBook.ViewModel
                 if (value == Model.LastName) return;
                 Model.LastName = value;
                 OnPropertyChanged(nameof(LastName));
-                OnPropertyChanged(nameof(FirstName));
+                OnPropertyChanged(nameof(FullName));
             }
         }
 

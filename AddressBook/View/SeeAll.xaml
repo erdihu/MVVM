@@ -14,9 +14,10 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="viewModel:PersonViewModel">
                     <StackPanel>
-                        <Image Source="../Assets/Square44x44Logo.png" MaxWidth="44" MaxHeight="44" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="../Assets/Square44x44Logo.png" MaxWidth="88" MaxHeight="88" HorizontalAlignment="Center" VerticalAlignment="Center">
                         </Image>
-                        <TextBlock Text="{x:Bind FullName}" Margin="5,5" />
+                        <TextBlock Text="{x:Bind FirstName}" Width="Auto" Height="Auto" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{x:Bind LastName}" Width="Auto" Height="Auto" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>

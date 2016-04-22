@@ -5,7 +5,9 @@
     xmlns:local="using:AddressBook.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:viewModel="using:AddressBook.ViewModel"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModel:MainViewModel}">
 
     <Page.BottomAppBar>
         <CommandBar IsSticky="True" ClosedDisplayMode="Minimal">
@@ -68,7 +70,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Text="{Binding FullName, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
