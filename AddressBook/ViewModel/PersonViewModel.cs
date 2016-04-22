@@ -15,7 +15,7 @@ namespace AddressBook.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        //[NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -37,8 +37,10 @@ namespace AddressBook.ViewModel
             get { return _person.FirstName; }
             set
             {
+                if (value == _person.FirstName) return;
                 _person.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
+                OnPropertyChanged(nameof(LastName));
             }
         }
 
@@ -47,8 +49,10 @@ namespace AddressBook.ViewModel
             get { return _person.LastName; }
             set
             {
+                if (value == _person.LastName) return;
                 _person.LastName = value;
                 OnPropertyChanged(nameof(LastName));
+                OnPropertyChanged(nameof(FirstName));
             }
         }
 
@@ -57,6 +61,7 @@ namespace AddressBook.ViewModel
             get { return _person.Email; }
             set
             {
+                if (value == _person.Email) return;
                 _person.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
@@ -67,6 +72,7 @@ namespace AddressBook.ViewModel
             get { return _person.TelephoneMain; }
             set
             {
+                if (value == _person.TelephoneMain) return;
                 _person.TelephoneMain = value;
                 OnPropertyChanged(nameof(TelephoneMain));
             }
@@ -77,6 +83,7 @@ namespace AddressBook.ViewModel
             get { return _person.TelephoneOther; }
             set
             {
+                if (value == _person.TelephoneOther) return;
                 _person.TelephoneOther = value;
                 OnPropertyChanged(nameof(TelephoneOther));
             }
@@ -87,6 +94,7 @@ namespace AddressBook.ViewModel
             get { return _person.Skype; }
             set
             {
+                if (value == _person.Skype) return;
                 _person.Skype = value;
                 OnPropertyChanged(nameof(Skype));
             }
@@ -97,6 +105,7 @@ namespace AddressBook.ViewModel
             get { return _person.Website; }
             set
             {
+                if (value == _person.Website) return;
                 _person.Website = value;
                 OnPropertyChanged(nameof(Website));
             }
@@ -107,6 +116,7 @@ namespace AddressBook.ViewModel
             get { return _person.Address; }
             set
             {
+                if (value == _person.Address) return;
                 _person.Address = value;
                 OnPropertyChanged(nameof(Address));
             }

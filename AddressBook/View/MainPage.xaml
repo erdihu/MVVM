@@ -83,9 +83,9 @@
             <TextBlock Text="{Binding FullName}"></TextBlock>
         </StackPanel>
 
-        <SplitView Name="SplitView"  Grid.Row="1" Grid.Column="0" IsPaneOpen="True">
+        <SplitView Name="SplitView"  Grid.Row="1" Grid.Column="0" IsPaneOpen="True" DisplayMode="Inline">
             <SplitView.Pane>
-                <ListView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" IsItemClickEnabled="True">
+                <ListView ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsItemClickEnabled="True">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="viewModel:PersonViewModel">
                                 <views:ContactListUserControl/>

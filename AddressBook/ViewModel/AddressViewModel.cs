@@ -14,7 +14,7 @@ namespace AddressBook.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        //[NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -34,6 +34,7 @@ namespace AddressBook.ViewModel
             get { return _address.Street; }
             set
             {
+                if (value == _address.Street) return;
                 _address.Street = value;
                 OnPropertyChanged(nameof(Street));
             }
@@ -44,6 +45,7 @@ namespace AddressBook.ViewModel
             get { return _address.City; }
             set
             {
+                if (value == _address.City) return;
                 _address.City = value;
                 OnPropertyChanged(nameof(City));
             }
@@ -54,6 +56,7 @@ namespace AddressBook.ViewModel
             get { return _address.PostalCode; }
             set
             {
+                if (value == _address.PostalCode) return;
                 _address.PostalCode = value;
                 OnPropertyChanged(nameof(PostalCode));
             }
@@ -64,6 +67,7 @@ namespace AddressBook.ViewModel
             get { return _address.Country; }
             set
             {
+                if (value == _address.Country) return;
                 _address.Country = value;
                 OnPropertyChanged(nameof(Country));
             }
