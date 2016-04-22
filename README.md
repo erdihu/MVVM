@@ -7,7 +7,7 @@
 
 ##Functions
 * Add new contact
-* Edit existing contant
+* Edit existing contact
 * Delete contact
 
 ##Inner workings
