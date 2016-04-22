@@ -8,10 +8,11 @@
     mc:Ignorable="d">
 
 
-
-    <RelativePanel Grid.Column="1" Grid.Row="1" Background="White">
-        <local:EditPersonUserControl x:Name="editPerson" DataContext="{Binding}" />
-        <Button Name="SaveButton" RelativePanel.Below="editPerson" Content="Save" Click="SaveButton_OnClick" Margin="5,5"/>
-    </RelativePanel>
+    <ScrollViewer Grid.Column="1" Grid.Row="1">
+        <RelativePanel  Background="White">
+            <local:EditPersonUserControl x:Name="editPerson" DataContext="{Binding}" />
+            <Button Name="SaveButton" RelativePanel.Below="editPerson" Content="Save" Click="SaveButton_OnClick" Margin="5,5"/>
+        </RelativePanel>
+    </ScrollViewer>
 
 </Page>
