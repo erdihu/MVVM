@@ -14,21 +14,8 @@
 
         <RelativePanel>
 
-            <!--<TextBox Name="TxtFName"  RelativePanel.AlignLeftWithPanel="True" Width="250" Header="Name" Text="{Binding SelectedPerson.FirstName}" Margin="5,5"/>
-            <TextBox Name ="TxtLName" Width="250" Header="Surname" Text="{Binding SelectedPerson.LastName}" Margin="5,5" RelativePanel.RightOf="TxtFName" />
-            <TextBox Name="TxtT1"  RelativePanel.Below="TxtFName" Width="250" Header="Telephone (Main)" Text="{Binding SelectedPerson.TelephoneMain}" Margin="5,5"/>
-            <TextBox Name="TxtT2" RelativePanel.RightOf="TxtT1" RelativePanel.Below="TxtLName" Width="250" Header="Telephone (Other)" Text="{Binding SelectedPerson.TelephoneOther}" Margin="5,5"/>
-            <TextBox Name="TxtEmail" RelativePanel.Below="TxtT1" Width="250" Header="Email" Text="{Binding SelectedPerson.Email}" Margin="5,5"/>
-            <TextBox Name="TxtSkype" RelativePanel.RightOf="TxtEmail" RelativePanel.Below="TxtT2" Width="250" Header="Skype" Text="{Binding SelectedPerson.Skype}" Margin="5,5"/>
-            <TextBox Name="TxtWebsite" RelativePanel.Below="TxtEmail" Width="505" Header="Website" Text="{Binding SelectedPerson.Skype}" Margin="5,5"/>
-            <TextBlock Name="ADetail"  Text="Address Details" RelativePanel.Below="TxtWebsite" Margin="5,5" FontWeight="Bold"/>
-            <TextBox Name="TxtStreet" RelativePanel.Below="ADetail" Width="505" Header="Street" Text="{Binding SelectedPerson.Address.Street}" Margin="5,5"/>
-            <TextBox Name="TxtCity" RelativePanel.Below="TxtStreet" Width="505" Header="City" Text="{Binding SelectedPerson.Address.City}" Margin="5,5"/>
-            <TextBox Name="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Postal code" Text="{Binding SelectedPerson.Address.PostalCode}" Margin="5,5"/>
-            <TextBox Name="TxtCountry" RelativePanel.RightOf="TxtPostalcode" RelativePanel.Below="TxtCity" Width="250" Header="Country" Text="{Binding SelectedPerson.Address.Country}" Margin="5,5"/>-->
-
-            <views:EditPersonUserControl DataContext="{Binding SelectedPerson, Mode=TwoWay}" />
-
+            <views:EditPersonUserControl Name="uc" DataContext="{Binding SelectedPerson, Mode=TwoWay}" />
+            <Button x:Name="DeleteButton" RelativePanel.Below="uc" Content="Delete" Foreground="Red" Background="White" Click="DeleteButton_OnClick" />
         </RelativePanel>
     </ScrollViewer>
 </Page>

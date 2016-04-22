@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AddressBook.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +23,23 @@ namespace AddressBook.View
     /// </summary>
     public sealed partial class Main : Page
     {
+        private MainViewModel _model;
         public Main()
         {
             this.InitializeComponent();
+
+        }
+
+        private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(_model.SelectedPerson != null)
+                _model.Persons.Remove(_model.SelectedPerson);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            _model = (MainViewModel)e.Parameter;
         }
     }
 }
