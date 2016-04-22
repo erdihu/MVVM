@@ -11,6 +11,7 @@ using AddressBook.Annotations;
 using AddressBook.Model;
 using Template10.Mvvm;
 using Template10.Utils;
+using System.Collections.Specialized;
 
 namespace AddressBook.ViewModel
 {
@@ -19,7 +20,7 @@ namespace AddressBook.ViewModel
         private IRepository _mockrepo;
         private PersonViewModel _selectedPerson;
 
-        public ObservableCollection<PersonViewModel> Persons { get; set; }
+        public ObservableCollection<PersonViewModel> Persons { get; }
 
         public PersonViewModel SelectedPerson
         {
@@ -35,13 +36,19 @@ namespace AddressBook.ViewModel
         public MainViewModel()
         {
             _mockrepo = new MockRepo();
-            Populate();
+            Persons = new ObservableCollection<PersonViewModel>(_mockrepo.Get().OrderBy(p => p.FirstName).Select(p => new PersonViewModel(p)));
+            Persons.CollectionChanged += Persons_CollectionChanged;
+
         }
 
-        //Populate PersonViewModel from Person model
-        public void Populate()
+        private void Persons_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Persons = new ObservableCollection<PersonViewModel>(_mockrepo.Get().OrderBy(p => p.FirstName).Select(p => new PersonViewModel(p)));
+            if (e.Action == NotifyCollectionChangedAction.Add)
+                foreach (PersonViewModel p in e.NewItems)
+                    _mockrepo.Insert(p.Model);
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+                foreach (PersonViewModel p in e.OldItems)
+                    _mockrepo.Delete(p.Model);
         }
 
 

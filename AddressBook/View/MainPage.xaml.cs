@@ -26,13 +26,14 @@ namespace AddressBook
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private readonly MainViewModel _model = new MainViewModel();
         private Commands _command;
 
         public MainPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            this.DataContext = new MainViewModel();
+            this.DataContext = _model;
             this.Loaded += MainPage_Loaded;
         }
 
@@ -43,12 +44,12 @@ namespace AddressBook
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof (AddContact));
+            Frame.Navigate(typeof (AddContact), _model);
         }
 
         private void SeeAll_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(SeeAll));
+            Frame.Navigate(typeof (SeeAll), _model);
         }
 
         private void ToggleClick(object sender, RoutedEventArgs e)

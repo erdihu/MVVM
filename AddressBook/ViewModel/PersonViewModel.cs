@@ -15,30 +15,32 @@ namespace AddressBook.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //[NotifyPropertyChangedInvocator]
+        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private Person _person;
+
+
+        public Person Model { get; }
 
         public PersonViewModel(Person p)
         {
-            _person = p;
+            Model = p;
         }
 
-        public Guid Id  => _person.Id; 
+        public Guid Id  => Model.Id; 
 
         public string FullName => $"{FirstName} {LastName}";
 
         public string FirstName
         {
-            get { return _person.FirstName; }
+            get { return Model.FirstName; }
             set
             {
-                if (value == _person.FirstName) return;
-                _person.FirstName = value;
+                if (value == Model.FirstName) return;
+                Model.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
                 OnPropertyChanged(nameof(LastName));
             }
@@ -46,11 +48,11 @@ namespace AddressBook.ViewModel
 
         public string LastName
         {
-            get { return _person.LastName; }
+            get { return Model.LastName; }
             set
             {
-                if (value == _person.LastName) return;
-                _person.LastName = value;
+                if (value == Model.LastName) return;
+                Model.LastName = value;
                 OnPropertyChanged(nameof(LastName));
                 OnPropertyChanged(nameof(FirstName));
             }
@@ -58,66 +60,66 @@ namespace AddressBook.ViewModel
 
         public string Email
         {
-            get { return _person.Email; }
+            get { return Model.Email; }
             set
             {
-                if (value == _person.Email) return;
-                _person.Email = value;
+                if (value == Model.Email) return;
+                Model.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
 
         public string TelephoneMain
         {
-            get { return _person.TelephoneMain; }
+            get { return Model.TelephoneMain; }
             set
             {
-                if (value == _person.TelephoneMain) return;
-                _person.TelephoneMain = value;
+                if (value == Model.TelephoneMain) return;
+                Model.TelephoneMain = value;
                 OnPropertyChanged(nameof(TelephoneMain));
             }
         }
 
         public string TelephoneOther
         {
-            get { return _person.TelephoneOther; }
+            get { return Model.TelephoneOther; }
             set
             {
-                if (value == _person.TelephoneOther) return;
-                _person.TelephoneOther = value;
+                if (value == Model.TelephoneOther) return;
+                Model.TelephoneOther = value;
                 OnPropertyChanged(nameof(TelephoneOther));
             }
         }
 
         public string Skype
         {
-            get { return _person.Skype; }
+            get { return Model.Skype; }
             set
             {
-                if (value == _person.Skype) return;
-                _person.Skype = value;
+                if (value == Model.Skype) return;
+                Model.Skype = value;
                 OnPropertyChanged(nameof(Skype));
             }
         }
 
         public string Website
         {
-            get { return _person.Website; }
+            get { return Model.Website; }
             set
             {
-                if (value == _person.Website) return;
-                _person.Website = value;
+                if (value == Model.Website) return;
+                Model.Website = value;
                 OnPropertyChanged(nameof(Website));
             }
         }
 
         public Address Address
         {
-            get { return _person.Address; }
+            get { return Model.Address; }
             set
             {
-                if (value == _person.Address) return;
-                _person.Address = value;
+                if (value == Model.Address) return;
+                Model.Address = value;
                 OnPropertyChanged(nameof(Address));
             }
         }
