@@ -110,6 +110,9 @@
     <Compile Include="View\ContactListUserControl.xaml.cs">
       <DependentUpon>ContactListUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditPersonUserControl.xaml.cs">
+      <DependentUpon>EditPersonUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContactListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditPersonUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
