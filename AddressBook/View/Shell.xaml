@@ -7,6 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar IsSticky="True" ClosedDisplayMode="Minimal">
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton Label="New"
+                                  Icon="Add"
+                                  RequestedTheme="Light" 
+                                  Click="ButtonBase_OnClick"/>
+                    <AppBarButton Label="See All"
+                                  Icon="ViewAll"
+                                  RequestedTheme="Light" 
+                                  Click="SeeAll_Click"/>
+                </StackPanel>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -35,6 +52,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
 
         <SplitView x:Name="SplitView"
                    IsPaneOpen="False"

@@ -10,10 +10,6 @@
     xmlns:views ="using:AddressBook.View"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        
-    </Page.Resources>
-
     <Page.BottomAppBar>
         <CommandBar IsSticky="True" ClosedDisplayMode="Minimal">
             <CommandBar.Content>

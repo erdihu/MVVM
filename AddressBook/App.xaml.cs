@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using AddressBook.Model;
+using AddressBook.View;
 using AddressBook.ViewModel;
 
 namespace AddressBook
@@ -42,6 +44,9 @@ namespace AddressBook
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+            var view = ApplicationView.GetForCurrentView();
+            view.SetPreferredMinSize(new Size { Width = 800, Height = 600 });
 
             //#if DEBUG
             //            if (System.Diagnostics.Debugger.IsAttached)
@@ -76,7 +81,7 @@ namespace AddressBook
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(Shell), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
