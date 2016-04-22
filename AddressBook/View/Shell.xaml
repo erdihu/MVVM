@@ -21,6 +21,14 @@
                                   Icon="ViewAll"
                                   RequestedTheme="Light" 
                                   Click="SeeAll_Click"/>
+                    <AppBarButton Label="Save"
+                                  Icon="Save"
+                                  RequestedTheme="Light" 
+                                  Command="{Binding SaveCommand}"/>
+                    <AppBarButton Label="Delete"
+                                  Icon="Delete"
+                                  RequestedTheme="Light" 
+                                  Command="{Binding DeleteCommand}"/>
                 </StackPanel>
             </CommandBar.Content>
         </CommandBar>

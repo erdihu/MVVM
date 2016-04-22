@@ -30,7 +30,11 @@ namespace AddressBook.ViewModel
             Model = p;
         }
 
-        public Guid Id  => Model.Id;
+        public Guid Id
+        {
+            get { return Model.Id; }
+            set { Model.Id = Guid.NewGuid(); }
+        }
 
 
         public string FullName => $"{FirstName} {LastName}";

@@ -12,6 +12,7 @@ using AddressBook.Model;
 using Template10.Mvvm;
 using Template10.Utils;
 using System.Collections.Specialized;
+using System.Windows.Input;
 
 namespace AddressBook.ViewModel
 {
@@ -33,6 +34,10 @@ namespace AddressBook.ViewModel
             }
         }
 
+        //Commands to save and delete
+        public ICommand SaveCommand => new DelegateCommand(Save);
+        public ICommand DeleteCommand => new DelegateCommand(Delete);
+
         public MainViewModel()
         {
             _mockrepo = new MockRepo();
@@ -50,9 +55,18 @@ namespace AddressBook.ViewModel
             else if (e.Action == NotifyCollectionChangedAction.Remove)
                 foreach (PersonViewModel p in e.OldItems)
                     _mockrepo.Delete(p.Model);
+            _mockrepo.SaveChanges();
         }
 
+        private void Save()
+        {
+            _mockrepo.SaveChanges();
+        }
 
+        private void Delete()
+        {
+            Persons.Remove(SelectedPerson);
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

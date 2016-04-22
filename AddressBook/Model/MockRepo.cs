@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using Newtonsoft.Json;
 
 namespace AddressBook.Model
 {
@@ -13,53 +17,62 @@ namespace AddressBook.Model
 
         public MockRepo()
         {
-            List<Address> _addresses = new List<Address>
-            {
-               new Address
-               {
-                   Id = Guid.NewGuid(),
-                   Street = "Northway 1",
-                   City = "Northcity",
-                   PostalCode = "12345",
-                   Country = "Mars",
-               }, 
-               new Address
-               {
-                   Id = Guid.NewGuid(),
-                   Street = "Redway 2",
-                   City = "Ghostcity",
-                   PostalCode = "12345",
-                   Country = "Jupiter",
-               }
-            };
 
-            _persons = new List<Person>
-            {
-                new Person
-                {
-                    Id = Guid.NewGuid(),
-                    FirstName = "The",
-                    LastName = "Martian",
-                    Email = "martian@mars.com",
-                    TelephoneMain = "01234",
-                    TelephoneOther = "N/A",
-                    Skype = "martian",
-                    Website = "www.mars.com",
-                    Address = _addresses[0]
-                },
-                new Person
-                {
-                    Id = Guid.NewGuid(),
-                    FirstName = "Big",
-                    LastName = "Guy",
-                    Email = "N/A",
-                    TelephoneMain = "01234",
-                    TelephoneOther = "N/A",
-                    Skype = "big_guy123",
-                    Website = "www.jupiter.com",
-                    Address = _addresses[1]
-                },
-            };
+            var path = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.json");
+            if (File.Exists(Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.json")))
+                _persons = JsonConvert.DeserializeObject<List<Person>>(File.ReadAllText(path));
+            else
+                _persons = new List<Person>();
+
+            //List<Address> _addresses = new List<Address>
+            //{
+            //   new Address
+            //   {
+            //       Id = Guid.NewGuid(),
+            //       Street = "Northway 1",
+            //       City = "Northcity",
+            //       PostalCode = "12345",
+            //       Country = "Mars",
+            //   },
+            //   new Address
+            //   {
+            //       Id = Guid.NewGuid(),
+            //       Street = "Redway 2",
+            //       City = "Ghostcity",
+            //       PostalCode = "12345",
+            //       Country = "Jupiter",
+            //   }
+            //};
+
+            //_persons = new List<Person>
+            //{
+            //    new Person
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        FirstName = "The",
+            //        LastName = "Martian",
+            //        Email = "martian@mars.com",
+            //        TelephoneMain = "01234",
+            //        TelephoneOther = "N/A",
+            //        Skype = "martian",
+            //        Website = "www.mars.com",
+            //        Address = _addresses[0]
+            //    },
+            //    new Person
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        FirstName = "Big",
+            //        LastName = "Guy",
+            //        Email = "N/A",
+            //        TelephoneMain = "01234",
+            //        TelephoneOther = "N/A",
+            //        Skype = "big_guy123",
+            //        Website = "www.jupiter.com",
+            //        Address = _addresses[1]
+            //    },
+            //};
+
+
         } 
         public void Delete(Person person)
         {
@@ -109,8 +122,9 @@ namespace AddressBook.Model
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            File.WriteAllText(Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.json"), JsonConvert.SerializeObject(_persons));
         }
+
 
         public void Update(Person person) //HOW?
         {

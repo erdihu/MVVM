@@ -15,7 +15,8 @@
         <RelativePanel>
 
             <views:EditPersonUserControl Name="uc" DataContext="{Binding SelectedPerson, Mode=TwoWay}" />
-            <Button x:Name="DeleteButton" RelativePanel.Below="uc" Content="Delete" Foreground="Red" Background="White" Click="DeleteButton_OnClick" />
+            <!--<Button x:Name="SaveButton" RelativePanel.Below="uc" Content="Save" Foreground="Black" Background="White" Click="SaveButton_OnClick" />
+            <Button x:Name="DeleteButton" RelativePanel.RightOf="SaveButton" RelativePanel.Below="uc" Content="Delete" Foreground="Red" Background="White" Click="DeleteButton_OnClick" />-->
         </RelativePanel>
     </ScrollViewer>
 </Page>
